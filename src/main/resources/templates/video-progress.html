@@ -823,9 +823,23 @@
 										</div>
                                     </li>
                                     <li>
-										<div class="add-group">
-											<a class="ad-btn" href="/project">Add New Order</a>
-										</div>
+                                        <div class="ad-user-btn">
+                                            <select class="form-control" id="select-status">
+                                                <option name="option-status">
+
+                                                </option>
+                                                <option name="option-status">
+                                                    还未学完
+                                                </option>
+                                                <option name="option-status">
+                                                    已完成
+                                                </option>
+                                                <option name="option-status">
+                                                    还未学习
+                                                </option>
+                                            </select>
+
+                                        </div>
 									</li>
                                 </ul>
                             </div>
@@ -1057,6 +1071,7 @@
     <script>
         getMyVideoProgress();
         setSearchInput("project-list","text-input",0);
+        setSearchInput("project-list","select-status",2)
     </script>
 </body>
 

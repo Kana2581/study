@@ -879,7 +879,7 @@
                                         <div class="row">
                                             <div class="form-group mb-20 col-sm-offset-10">
 
-                                                <input class="btn btn-danger" type="button" value="change" onclick="GetData()">
+                                                <input class="btn btn-danger" type="button" value="change" id="change-img-button" disabled="disabled" onclick="GetData()">
                                             </div>
                                         </div>
                        
@@ -1135,13 +1135,6 @@
 		</div>
 
 
-
-
-
-
-
-
-
 	</div>
     <!-- Color Setting -->
     <!-- Required Script -->
@@ -1221,6 +1214,7 @@
         if(CROPPER){
                     CROPPER.destroy()
                 }
+        $("#change-img-button").removeAttr("disabled");
         $("#finalImg").prop("class","col-sm-offset-5");
     }
     function GetData(){
@@ -1229,9 +1223,11 @@
 
                //然后调用浏览器原生的toBlob方法将canvas数据转换成blob数据
                //之后就可以愉快的将blob数据发送至后端啦，可根据自己情况进行发送，我这里用的是axios
+
                 const formData = new FormData();
                 // 第三个参数为文件名，可选填.
                 formData.append('croppedImage',document.getElementById("finalImg").src);
+                formData.append("uid",getQueryString("uid"));
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange=function ()
                 {
@@ -1242,8 +1238,6 @@
                 xhr.open("post","/user/api/upLoadPortrait",true);
 
                 xhr.send(formData);
-
-
 
 
     }
